@@ -1,0 +1,148 @@
+@use 'sass:math';
+// Обнуление
+*{padding: 0;margin: 0;border: 0;}
+*,*::before,*::after{ -moz-box-sizing: border-box;-webkit-box-sizing: border-box; box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus, a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height: 100%;width: 100%;font-size: 100%;line-height: 1;font-size: 14px;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}
+input,button,textarea{font-family: inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0;border: 0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: inherit;}
+// --------------------
+// переменные цветов
+:root{
+	--accent: #FCAB14;
+	--white: #fff;
+	--black: #000;
+	--opacity: rgba(0, 0, 0, 0.6);
+	--fz: calc(1vw + 1vh);
+}
+// подключение шрифта
+body{
+	font-family: 'Playfair Display', serif;
+	font-size: calc(var(--fz) * 1);
+	line-height: 45px;
+	letter-spacing: 5%;
+	font-weight: 400;
+}
+// настройка для прижатия footer к низу страницы
+.wrapper{
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.main{
+	flex: 1 1 auto;
+}
+// плавная прокрутка
+html{
+	scroll-behavior: smooth;
+}
+// стили container
+.container{
+	max-width: 1636px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.title{
+	font-size: calc(var(--fz) * 1.666666);
+	font-weight: 700;
+	color: var(--accent);
+	text-align: center;
+}
+.color{
+	color: var(--accent);
+}
+.row{
+	display: flex;
+	justify-content: space-between;
+	&__right{
+		margin-left: 98px;
+	}
+	&__text + &__text{
+		margin-top: 50px;
+	}
+}
+.row--order{
+	.row__right{
+		margin-left: 0;
+		margin-right: 98px;
+		order: -1;
+	}
+}
+.row-column{
+	flex-direction: column;
+	.row__right{
+		margin-left: 0;
+		margin-top: 98px;
+	}
+}
+// presentation
+.presentation{
+	overflow: hidden;
+	position: relative;
+	background: url('../img/bg.jpeg') no-repeat center / cover;
+	&::after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: var(--opacity);
+	}
+	&__inner{
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100vh;
+		position: relative;
+		z-index: 1;
+	}
+	&__text{
+		margin-top: 30px;
+		color: var(--white);
+	}
+}
+// excursion
+.excursion__inner{
+	padding-bottom: 150px;
+}
+.idea__title,
+.exposition__title,
+.zone__title,
+.excursion__title{
+	margin-bottom: 100px;
+}
+.idea__inner,
+.exposition__inner,
+.zone__inner,
+.column + .column,
+.excursion__inner{
+	padding-top: 150px;
+}
+// footer
+.footer{
+	background-color: var(--accent);
+	&__inner{
+		text-align: center;
+		padding: 30px 0;
+	}
+	&__link{
+		display: inline-flex;
+		align-items: center;
+		color: var(--white);
+	}
+	&__img{
+		margin-right: 15px;
+	}
+}
